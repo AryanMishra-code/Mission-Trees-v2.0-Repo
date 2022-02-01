@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class ItemsUsageManagement : MonoBehaviour
 {
-    [SerializeField] private Text equipmentStatus;
+    [Header("Equipment Status Checks")]
+    [SerializeField] private Text plantContainerEquipmentStatus;
 
+    [Header("Item Usage Variables Ref.")]
     [SerializeField] private Camera FPCamera;
     [SerializeField] private float range = 10f;
     [SerializeField] private GameObject plantSapling;
@@ -16,7 +18,7 @@ public class ItemsUsageManagement : MonoBehaviour
     
     void Update()
     {
-        if (equipmentStatus.text == "EQUIPPED")
+        if (plantContainerEquipmentStatus.text == "EQUIPPED")
         {
             if (Input.GetKeyDown(KeyCode.P))
             {
@@ -31,9 +33,12 @@ public class ItemsUsageManagement : MonoBehaviour
         
         if (Physics.Raycast(FPCamera.transform.position, FPCamera.transform.forward, out hit, range))
         {
-            Instantiate(plantSapling, hit.point, Quaternion.identity);
-            _numberOfPlantsPlanted++;
-            countOfPlants.text = _numberOfPlantsPlanted.ToString();
+            if (hit.transform.tag == "Terrain Tag")
+            {
+                Instantiate(plantSapling, hit.point, Quaternion.identity);
+                _numberOfPlantsPlanted++;
+                countOfPlants.text = _numberOfPlantsPlanted.ToString();
+            }
         }
         else
         {
