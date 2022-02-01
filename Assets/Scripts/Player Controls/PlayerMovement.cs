@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Character Control")]
     public CharacterController playerController;
     public float footstepInterval = 1f;
     public float walkSpeed = 12f;
@@ -12,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float gravity = -9.8f;
     public float jumpHeight = 3f;
 
+    [Header("Ground Check")]
     public Transform groundCheck;
     public float groundDistance = 1f;
     public LayerMask groundMask;

@@ -5,17 +5,20 @@ using UnityEngine;
 
 public class GamePlayStart : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement playerMovement;
-    
+    [Header("Pre-Game UI")]
     [SerializeField] private GameObject gameTextStart;
     [SerializeField] private GameObject startingHints;
     [SerializeField] private GameObject thirdText;
+    [SerializeField] private float timePauseForText = 10f;
+    
+    [Header("Starting Game Objects")]
     [SerializeField] private GameObject countOfSaplingsText;
     [SerializeField] private GameObject statusOfSaplingsText;
     [SerializeField] private GameObject reticule;
-    [SerializeField] private GamePlayeOptions optionsManager;
     
-    [SerializeField] private float timePauseForText = 10f;
+    [Header("Other Ref. Components")]
+    [SerializeField] private GamePlayOptions optionsManager;
+    [SerializeField] private PlayerMovement playerMovement;
 
     void Start()
     {

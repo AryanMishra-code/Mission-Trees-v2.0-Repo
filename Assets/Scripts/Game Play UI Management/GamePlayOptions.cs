@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GamePlayeOptions : MonoBehaviour
+public class GamePlayOptions : MonoBehaviour
 {
-    [SerializeField] private GameObject optionsButton;
+    [Header("Object Components")]
+    [SerializeField] private ItemsUsageManagement plantManager;
     [SerializeField] private PlayerMovement _playerMovement;
-    [SerializeField] private PlantationOfSaplings plantManager;
-    [SerializeField] private GameObject reticule;
     [SerializeField] private CameraMouseLook _cameraMouseLook;
+    
+    [Header("Game Object Variables")]
+    [SerializeField] private GameObject optionsButton;
+    [SerializeField] private GameObject reticule;
     [SerializeField] private GameObject optionsPanel;
 
     private void Update()

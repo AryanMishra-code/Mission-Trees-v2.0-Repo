@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlantationOfSaplings : MonoBehaviour
+public class ItemsUsageManagement : MonoBehaviour
 {
     [SerializeField] private Text equipmentStatus;
 
@@ -23,10 +23,6 @@ public class PlantationOfSaplings : MonoBehaviour
                 PlantSapling();
             }
         }
-        /* else
-        {
-            
-        } */
     }
 
     private void PlantSapling()
