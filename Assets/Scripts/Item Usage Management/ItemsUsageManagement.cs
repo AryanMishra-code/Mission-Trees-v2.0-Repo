@@ -15,10 +15,15 @@ public class ItemsUsageManagement : MonoBehaviour
     [SerializeField] private Text countOfPlants;
 
     private int _numberOfPlantsPlanted = 0;
+    [SerializeField] EquipmentStatusChecker _equipmentStatus;
+
+    [Header("Booleans For Equipment Checks")]
+    public bool hasEquippedPlant;
+    //TO DO: Add many more boolean checks for equipment.
     
     void Update()
     {
-        if (plantContainerEquipmentStatus.text == "EQUIPPED")
+        if (hasEquippedPlant)
         {
             if (Input.GetKeyDown(KeyCode.P))
             {
@@ -39,10 +44,6 @@ public class ItemsUsageManagement : MonoBehaviour
                 _numberOfPlantsPlanted++;
                 countOfPlants.text = _numberOfPlantsPlanted.ToString();
             }
-        }
-        else
-        {
-            return;
         }
     }
 }

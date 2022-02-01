@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LoadAsyncOperation : MonoBehaviour
 {
     [SerializeField] Image progressBar;
+    [SerializeField] private int sceneToLoad;
 
     void Start()
     {
@@ -15,7 +16,7 @@ public class LoadAsyncOperation : MonoBehaviour
     IEnumerator LoadScene()
     {
         yield return new WaitForSeconds(7.5f);
-        AsyncOperation gameLevel = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        AsyncOperation gameLevel = SceneManager.LoadSceneAsync(sceneToLoad);
         while (gameLevel.progress < 1)
         {
             progressBar.fillAmount = gameLevel.progress;

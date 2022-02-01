@@ -7,11 +7,18 @@ using UnityEngine.UI;
 public class EquipmentStatusChecker : MonoBehaviour
 {
     [SerializeField] private Text statusCheck;
+
+    [Header("Item Usage Component")]
+    [SerializeField] private ItemsUsageManagement _itemsUsageManagement;
     
     private void OnTriggerEnter(Collider other)
     {
-        statusCheck.text = "EQUIPPED";
-        statusCheck.color = Color.green;
-        Destroy(gameObject);
+        if (gameObject.tag == "Plant Sapling")
+        {
+            _itemsUsageManagement.hasEquippedPlant = true;
+            statusCheck.text = "EQUIPPED";
+            statusCheck.color = Color.green;
+            Destroy(gameObject);
+        }
     }
 }
