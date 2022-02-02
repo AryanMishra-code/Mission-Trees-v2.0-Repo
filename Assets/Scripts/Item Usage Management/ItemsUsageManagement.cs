@@ -23,9 +23,9 @@ public class ItemsUsageManagement : MonoBehaviour
     
     void Update()
     {
-        if (hasEquippedPlant)
+        if (Input.GetMouseButtonDown(1))
         {
-            if (Input.GetKeyDown(KeyCode.P))
+            if (hasEquippedPlant)
             {
                 PlantSapling();
             }

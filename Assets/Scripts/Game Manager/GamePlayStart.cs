@@ -13,8 +13,12 @@ public class GamePlayStart : MonoBehaviour
     
     [Header("Starting Game Objects")]
     [SerializeField] private GameObject countOfSaplingsText;
-    [SerializeField] private GameObject statusOfSaplingsText;
     [SerializeField] private GameObject reticule;
+    
+    [Header("Equipment Status Checker References")]
+    [SerializeField] private GameObject statusOfSaplingsText;
+    [SerializeField] private GameObject statusOfWaterBucketText;
+    [SerializeField] private GameObject statusOfFenceWoodText;
     
     [Header("Other Ref. Components")]
     [SerializeField] private GamePlayOptions optionsManager;
@@ -41,8 +45,11 @@ public class GamePlayStart : MonoBehaviour
         
         thirdText.SetActive(false);
         countOfSaplingsText.SetActive(true);
-        statusOfSaplingsText.SetActive(true);
         reticule.SetActive(true);
+        
+        statusOfSaplingsText.SetActive(true);
+        statusOfWaterBucketText.SetActive(true);
+        statusOfFenceWoodText.SetActive(true);
         
         yield return new WaitForSeconds(2f);
         playerMovement.enabled = true;
