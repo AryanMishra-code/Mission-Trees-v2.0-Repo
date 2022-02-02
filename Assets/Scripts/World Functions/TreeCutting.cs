@@ -10,15 +10,10 @@ public class TreeCutting : MonoBehaviour
     [SerializeField] private Transform player;
     private float distanceToPlayer = Mathf.Infinity;
     private Animator animController;
-
-    [SerializeField] private AudioClip chainsaw;
-    [SerializeField] private AudioSource chainsawSFX;
-
+    
     private void Start()
     {
         animController = GetComponent<Animator>();
-        chainsawSFX = GetComponent<AudioSource>();
-        chainsawSFX.clip = chainsaw;
     }
 
     void Update()
@@ -27,13 +22,10 @@ public class TreeCutting : MonoBehaviour
         
         if (distanceToPlayer <= rangeToStart)
         {
-            chainsawSFX.Play();
-            
             treeHealth -= 7.5f;
 
             if (treeHealth <= 0)
             {
-                chainsawSFX.Stop();
                 animController.SetTrigger("Set Tree Fall");
             }
         }
