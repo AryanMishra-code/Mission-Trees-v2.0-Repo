@@ -31,7 +31,7 @@ public class ItemsUsageManagement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetMouseButtonDown(0))
         {
             if (hasEquippedBucket)
             {
