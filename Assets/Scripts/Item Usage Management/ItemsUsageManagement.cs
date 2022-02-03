@@ -15,21 +15,15 @@ public class ItemsUsageManagement : MonoBehaviour
     [SerializeField] private Text countOfPlants;
 
     private int _numberOfPlantsPlanted = 0;
-    [SerializeField] EquipmentStatusChecker _equipmentStatus;
 
     [Header("Booleans For Equipment Checks")]
     public bool hasEquippedPlant;
-    //TO DO: Add many more boolean checks for equipment.
+    public bool hasEquippedBucket;
+    public bool hasEquippedFenchWood;
     
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (hasEquippedPlant)
-            {
-                PlantSapling();
-            }
-        }
+        
     }
 
     private void PlantSapling()
