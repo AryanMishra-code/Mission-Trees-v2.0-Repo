@@ -19,11 +19,33 @@ public class ItemsUsageManagement : MonoBehaviour
     [Header("Booleans For Equipment Checks")]
     public bool hasEquippedPlant;
     public bool hasEquippedBucket;
-    public bool hasEquippedFenchWood;
+    public bool hasEquippedFenceWood;
     
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(1))
+        {
+            if (hasEquippedPlant)
+            {
+                PlantSapling();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            if (hasEquippedBucket)
+            {
+                PlantIrrigation();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (hasEquippedFenceWood)
+            {
+                PlantAreaFencing();
+            }
+        }
     }
 
     private void PlantSapling()
@@ -39,5 +61,15 @@ public class ItemsUsageManagement : MonoBehaviour
                 countOfPlants.text = _numberOfPlantsPlanted.ToString();
             }
         }
+    }
+
+    private void PlantIrrigation()
+    {
+        // TO DO
+    }
+
+    private void PlantAreaFencing()
+    {
+        // TO DO
     }
 }
