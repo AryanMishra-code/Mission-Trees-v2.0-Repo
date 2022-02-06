@@ -65,11 +65,11 @@ public class ItemsUsageManagement : MonoBehaviour
 
     private void PlantIrrigation()
     {
-        // TO DO
+        // TODO
     }
 
     private void PlantAreaFencing()
     {
-        // TO DO
+        // TODO
     }
 }
