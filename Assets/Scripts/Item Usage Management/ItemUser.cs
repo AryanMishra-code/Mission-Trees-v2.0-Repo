@@ -29,9 +29,10 @@ public class ItemUser : MonoBehaviour
         if (itemsInInventory.Count > currentIndex)
         {
             currentItem = itemsInInventory[currentIndex];
-            currentItemObject = itemHolder.transform.GetChild(currentIndex).gameObject;
-            currentItemObject.SetActive(true);
-            foreach (Transform child in itemHolder) if (child.gameObject != currentItemObject) child.gameObject.SetActive(false);
+            // currentItemObject = itemHolder.transform.GetChild(currentIndex).gameObject;
+            // currentItemObject.SetActive(true);
+            // foreach (Transform child in itemHolder) if (child.gameObject != currentItemObject) child.gameObject.SetActive(false);
+            EquipItem(itemHolder.transform.GetChild(currentIndex).gameObject);
         }
         else
         {
@@ -47,6 +48,20 @@ public class ItemUser : MonoBehaviour
         }
     }
 
+    public void EquipItem(GameObject item)
+    {
+        item.gameObject.SetActive(true);
+        foreach (Transform t in itemHolder)
+        {
+            if (t != item.transform)
+            {
+                t.gameObject.SetActive(false);
+            }
+        }
+
+        currentItem = item.GetComponent(typeof(IItem)) as IItem;
+    }
+    
     public void PickupItem(GameObject pickup)
     {
         var item = Instantiate(pickup, itemHolder);
