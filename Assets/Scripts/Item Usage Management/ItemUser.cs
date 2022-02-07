@@ -12,6 +12,7 @@ public class ItemUser : MonoBehaviour
     public Transform itemHolder = null;
 
     private IItem currentItem = null;
+    private GameObject currentItemObject;
     public List<IItem> itemsInInventory = new List<IItem>();
 
     private int currentIndex = 0;
@@ -24,15 +25,23 @@ public class ItemUser : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1)) currentIndex = 0;
         if (Input.GetKeyDown(KeyCode.Alpha2)) currentIndex = 1;
         if (Input.GetKeyDown(KeyCode.Alpha3)) currentIndex = 2;
-
-        if (itemsInInventory.Count > 0)
+        
+        if (itemsInInventory.Count > currentIndex)
         {
             currentItem = itemsInInventory[currentIndex];
+            currentItemObject = itemHolder.transform.GetChild(currentIndex).gameObject;
+            currentItemObject.SetActive(true);
+            foreach (Transform child in itemHolder) if (child.gameObject != currentItemObject) child.gameObject.SetActive(false);
         }
+        else
+        {
+            currentItem = null;
+            foreach (Transform obj in itemHolder) obj.gameObject.SetActive(false);
+        }
+
         
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log(currentItem);
             if (currentItem != null)
                 currentItem.Use();
         }
