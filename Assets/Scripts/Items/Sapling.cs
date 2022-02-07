@@ -1,34 +1,29 @@
-﻿using System;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace Items
+public class Sapling : MonoBehaviour
 {
-    public class Sapling : MonoBehaviour, IItem
+    private int growthStage = 0;
+    public List<GameObject> growthStagePrefabs = new List<GameObject>();
+
+    private GameObject currentSapling = null;
+    
+    private void Update()
     {
-        public GameObject plantSapling;
-
-        [HideInInspector] public int numberOfSaplingsPlanted;
-
-        private ItemUser itemUser;
-
-        private void Start()
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            itemUser = FindObjectOfType<ItemUser>();
+            UpdateGrowthStage();
         }
+    }
 
-        public void Use()
-        {
-            RaycastHit hit;
-        
-            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, itemUser.range))
-            {
-                if (hit.transform.CompareTag("Ground"))
-                {
-                    Instantiate(plantSapling, hit.point, Quaternion.identity);
-                    numberOfSaplingsPlanted++;
-                    itemUser.plantCountText.text = numberOfSaplingsPlanted.ToString();
-                }
-            }
-        }
+    private void UpdateGrowthStage()
+    {
+        if (currentSapling != null)
+            Destroy(currentSapling);
+        currentSapling = Instantiate(growthStagePrefabs[growthStage], transform);
+        growthStage++;
+        growthStage = Mathf.Clamp(growthStage, 0, growthStagePrefabs.Count - 1);
     }
 }
