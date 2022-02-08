@@ -13,12 +13,12 @@ public class Sapling : MonoBehaviour
     private GameObject currentSapling = null;
     private float currentWaterLevel = 0f;
 
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown((KeyCode.P))) UpdateGrowthStage(10f);
+        UpdateGrowthStage(waterLevelsForGrowthStages[0]);
     }
-    
-    private void UpdateGrowthStage(float waterAmt)
+
+    public void UpdateGrowthStage(float waterAmt)
     {
         currentWaterLevel += waterAmt;
         
