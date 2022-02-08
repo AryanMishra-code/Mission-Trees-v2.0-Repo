@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
 using System.Linq;
 
@@ -18,7 +18,7 @@ public class ItemUser : MonoBehaviour
     private int currentIndex = 0;
 
     [Header("Text Objects")]
-    public TextMeshProUGUI plantCountText = null;
+    public Text plantCountText = null;
     
     private void Update()
     {
