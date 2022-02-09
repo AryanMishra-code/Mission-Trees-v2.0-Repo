@@ -9,6 +9,7 @@ public class FencePlacer : MonoBehaviour
     public float placingRange;
     public LayerMask ground;
     public int rotationIncrement = 90;
+    public float undoSnappingDelay = 1f;
 
     private FencePreview currentPreview;
     public Vector3 targetRot;
