@@ -18,6 +18,7 @@ public class GamePlayStart : MonoBehaviour
     [Header("Other Ref. Components")]
     [SerializeField] private GamePlayOptions optionsManager;
     [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private FencePlacer _fence;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class GamePlayStart : MonoBehaviour
     IEnumerator GameProcess()
     {
         playerMovement.enabled = false;
+        _fence.enabled = false;
         gameTextStart.SetActive(true);
         yield return new WaitForSeconds(timePauseForText);
 
@@ -44,6 +46,7 @@ public class GamePlayStart : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         playerMovement.enabled = true;
+        _fence.enabled = true;
         optionsManager.enabled = true;
     }
 }

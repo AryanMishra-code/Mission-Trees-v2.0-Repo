@@ -42,8 +42,11 @@ public class FencePlacer : MonoBehaviour
         {
             if (currentPreview == null)
             {
-                currentPreview = Instantiate(fencePreview, hit.point, Quaternion.Euler(targetRot));
-                currentPreview.placer = this;
+                if (hit.transform.tag == "Ground")
+                {
+                    currentPreview = Instantiate(fencePreview, hit.point, Quaternion.Euler(targetRot));
+                    currentPreview.placer = this;
+                }
             }
         }
     }
