@@ -42,10 +42,6 @@ public class GamePlayStart : MonoBehaviour
         yield return new WaitForSeconds(timePauseForText + 5f);
 
         thirdText.SetActive(false);
-        basicControls.SetActive(true);
-        yield return new WaitForSeconds(timePauseForText);
-        
-        basicControls.SetActive(false);
         countOfSaplingsText.SetActive(true);
         reticule.SetActive(true);
 
