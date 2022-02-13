@@ -39,7 +39,7 @@ public class GamePlayStart : MonoBehaviour
         
         startingHints.SetActive(false);
         thirdText.SetActive(true);
-        yield return new WaitForSeconds(timePauseForText + 5f);
+        yield return new WaitForSeconds(timePauseForText + 10f);
 
         thirdText.SetActive(false);
         countOfSaplingsText.SetActive(true);
