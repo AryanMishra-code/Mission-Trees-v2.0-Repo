@@ -9,6 +9,7 @@ public class GamePlayStart : MonoBehaviour
     [SerializeField] private GameObject gameTextStart;
     [SerializeField] private GameObject startingHints;
     [SerializeField] private GameObject thirdText;
+    [SerializeField] private GameObject basicControls;
     [SerializeField] private float timePauseForText = 10f;
     
     [Header("Starting Game Objects")]
@@ -38,9 +39,13 @@ public class GamePlayStart : MonoBehaviour
         
         startingHints.SetActive(false);
         thirdText.SetActive(true);
-        yield return new WaitForSeconds(15f);
-        
+        yield return new WaitForSeconds(timePauseForText + 5f);
+
         thirdText.SetActive(false);
+        basicControls.SetActive(true);
+        yield return new WaitForSeconds(timePauseForText);
+        
+        basicControls.SetActive(false);
         countOfSaplingsText.SetActive(true);
         reticule.SetActive(true);
 

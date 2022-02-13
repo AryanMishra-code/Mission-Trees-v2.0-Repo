@@ -7,41 +7,56 @@ using UnityEngine.SceneManagement;
 public class GamePlayOptions : MonoBehaviour
 {
     [Header("Object Components")]
-    [SerializeField] private ItemsUsageManagement plantManager;
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private CameraMouseLook _cameraMouseLook;
     
     [Header("Game Object Variables")]
-    [SerializeField] private GameObject optionsButton;
+    // [SerializeField] private GameObject optionsButton;
     [SerializeField] private GameObject reticule;
     [SerializeField] private GameObject optionsPanel;
-
+    [SerializeField] private GameObject controlsPanel;
+    // [SerializeField] private GameObject controlsButton;
+    
     private void Update()
     {
-        if (Input.GetKey(KeyCode.O))
+        // if (Input.GetKey(KeyCode.O))
+        // {
+        //     optionsButton.SetActive(true);
+        //     _playerMovement.enabled = false;
+        //     _cameraMouseLook.enabled = false;
+        //     Cursor.lockState = CursorLockMode.None;
+        // }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            optionsButton.SetActive(true);
+            ShowOptionsPanel();
             _playerMovement.enabled = false;
-            plantManager.enabled = false;
             _cameraMouseLook.enabled = false;
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
     public void ShowOptionsPanel()
     {
+        controlsPanel.SetActive(false);
         reticule.SetActive(false);
         optionsPanel.SetActive(true);
-        optionsButton.SetActive(false);
+    }
+
+    public void ShowControls()
+    {
+        controlsPanel.SetActive(true);
+        optionsPanel.SetActive(false);
+        reticule.SetActive(false);
     }
     
     public void ResumeGame()
     {
+        controlsPanel.SetActive(false);
         optionsPanel.SetActive(false);
-        optionsButton.SetActive(false);
         reticule.SetActive(true);
         _playerMovement.enabled = true;
-        plantManager.enabled = true;
         _cameraMouseLook.enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
     }
